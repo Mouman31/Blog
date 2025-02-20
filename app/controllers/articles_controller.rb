@@ -1,6 +1,13 @@
 class ArticlesController < ApplicationController
+
+  allow_unauthenticated_access only: %i[ index show ]
+
   def index
-    @artciles = Article.all
+    if authenticated?
+    @articles = Article.all
+    else 
+      @articles = Article.where(status: 'public')
+    end
   end
 
   def show
@@ -44,7 +51,7 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title, :body, :status)
   end
 
 end
