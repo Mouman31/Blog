@@ -3,9 +3,9 @@ class ArticlesController < ApplicationController
 
   def index
     if authenticated?
-    @articles = Article.all
+      @articles = Article.all
     else 
-      @articles = Article.where(status: 'public')
+      @articles = Article.where(status: "public")
     end
   end
 
@@ -52,5 +52,4 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title, :body, :status)
   end
-
 end
