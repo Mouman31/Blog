@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
     allow_unauthenticated_access only: %i[create]
 
     def create

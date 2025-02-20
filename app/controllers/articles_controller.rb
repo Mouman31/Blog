@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   def index
     if authenticated?
       @articles = Article.all
-    else 
+    else
       @articles = Article.where(status: "public")
     end
   end
@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article
     else
-      render :new, status: :unprocessable_entity 
+      render :new, status: :unprocessable_entity
     end
   end
 
